@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IsTakipModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="TAdmin">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Admin" Type="varchar" MaxLength="50" />
+    <Property Name="Sifre" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TCagri">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CagriFirma" Type="tinyint" />
+    <Property Name="Konu" Type="varchar" MaxLength="50" />
+    <Property Name="Aciklama" Type="varchar(max)" />
+    <Property Name="Tarih" Type="date" />
+    <Property Name="Durum" Type="bit" />
+  </EntityType>
+  <EntityType Name="TCagriDetay">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cagri" Type="tinyint" />
+    <Property Name="Aciklama" Type="varchar(max)" />
+    <Property Name="Tarih" Type="date" />
+    <Property Name="Saat" Type="char" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="TDepartman">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ad" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TFirma">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Firma" Type="varchar(max)" />
+    <Property Name="Yetkili" Type="varchar" MaxLength="50" />
+    <Property Name="Telefon" Type="varchar" MaxLength="50" />
+    <Property Name="Sifre" Type="varchar" MaxLength="50" />
+    <Property Name="Mail" Type="varchar" MaxLength="50" />
+    <Property Name="Sektor" Type="varchar" MaxLength="50" />
+    <Property Name="Il" Type="varchar" MaxLength="50" />
+    <Property Name="Adres" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TGorev">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GorevVeren" Type="tinyint" />
+    <Property Name="GorevAlan" Type="tinyint" />
+    <Property Name="Aciklama" Type="varchar(max)" />
+    <Property Name="Durum" Type="bit" />
+    <Property Name="Tarih" Type="date" />
+  </EntityType>
+  <EntityType Name="TGorevDetay">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Gorev" Type="tinyint" />
+    <Property Name="Aciklama" Type="varchar(max)" />
+    <Property Name="Tarih" Type="date" />
+    <Property Name="Saat" Type="char" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="TPersonel">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Personel" Type="varchar(max)" />
+    <Property Name="Mail" Type="varchar" MaxLength="50" />
+    <Property Name="Telefon" Type="varchar" MaxLength="50" />
+    <Property Name="Gorsel" Type="varchar" MaxLength="50" />
+    <Property Name="Departman" Type="tinyint" />
+    <Property Name="Durum" Type="bit" />
+  </EntityType>
+  <Association Name="FK_TCagri_TFirma">
+    <End Role="TFirma" Type="Self.TFirma" Multiplicity="0..1" />
+    <End Role="TCagri" Type="Self.TCagri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TFirma">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TCagri">
+        <PropertyRef Name="CagriFirma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TCagriDetay_TCagri">
+    <End Role="TCagri" Type="Self.TCagri" Multiplicity="0..1" />
+    <End Role="TCagriDetay" Type="Self.TCagriDetay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TCagri">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TCagriDetay">
+        <PropertyRef Name="Cagri" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TGorev_TPersonel">
+    <End Role="TPersonel" Type="Self.TPersonel" Multiplicity="0..1" />
+    <End Role="TGorev" Type="Self.TGorev" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TPersonel">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TGorev">
+        <PropertyRef Name="GorevVeren" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TGorev_TPersonel1">
+    <End Role="TPersonel" Type="Self.TPersonel" Multiplicity="0..1" />
+    <End Role="TGorev" Type="Self.TGorev" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TPersonel">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TGorev">
+        <PropertyRef Name="GorevAlan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TGorev_TPersonel2">
+    <End Role="TPersonel" Type="Self.TPersonel" Multiplicity="0..1" />
+    <End Role="TGorev" Type="Self.TGorev" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TPersonel">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TGorev">
+        <PropertyRef Name="GorevVeren" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TGorevDetay_TGorev">
+    <End Role="TGorev" Type="Self.TGorev" Multiplicity="0..1" />
+    <End Role="TGorevDetay" Type="Self.TGorevDetay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TGorev">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TGorevDetay">
+        <PropertyRef Name="Gorev" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TPersonel_TDepartman">
+    <End Role="TDepartman" Type="Self.TDepartman" Multiplicity="0..1" />
+    <End Role="TPersonel" Type="Self.TPersonel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TDepartman">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TPersonel">
+        <PropertyRef Name="Departman" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="IsTakipModelStoreContainer">
+    <EntitySet Name="TAdmin" EntityType="Self.TAdmin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TCagri" EntityType="Self.TCagri" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TCagriDetay" EntityType="Self.TCagriDetay" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TDepartman" EntityType="Self.TDepartman" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TFirma" EntityType="Self.TFirma" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TGorev" EntityType="Self.TGorev" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TGorevDetay" EntityType="Self.TGorevDetay" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TPersonel" EntityType="Self.TPersonel" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_TCagri_TFirma" Association="Self.FK_TCagri_TFirma">
+      <End Role="TFirma" EntitySet="TFirma" />
+      <End Role="TCagri" EntitySet="TCagri" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TCagriDetay_TCagri" Association="Self.FK_TCagriDetay_TCagri">
+      <End Role="TCagri" EntitySet="TCagri" />
+      <End Role="TCagriDetay" EntitySet="TCagriDetay" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TGorev_TPersonel" Association="Self.FK_TGorev_TPersonel">
+      <End Role="TPersonel" EntitySet="TPersonel" />
+      <End Role="TGorev" EntitySet="TGorev" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TGorev_TPersonel1" Association="Self.FK_TGorev_TPersonel1">
+      <End Role="TPersonel" EntitySet="TPersonel" />
+      <End Role="TGorev" EntitySet="TGorev" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TGorev_TPersonel2" Association="Self.FK_TGorev_TPersonel2">
+      <End Role="TPersonel" EntitySet="TPersonel" />
+      <End Role="TGorev" EntitySet="TGorev" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TGorevDetay_TGorev" Association="Self.FK_TGorevDetay_TGorev">
+      <End Role="TGorev" EntitySet="TGorev" />
+      <End Role="TGorevDetay" EntitySet="TGorevDetay" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TPersonel_TDepartman" Association="Self.FK_TPersonel_TDepartman">
+      <End Role="TDepartman" EntitySet="TDepartman" />
+      <End Role="TPersonel" EntitySet="TPersonel" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

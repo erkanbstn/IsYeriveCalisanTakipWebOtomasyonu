@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="IsTakipModelStoreContainer" CdmEntityContainer="IsTakipEntities">
+    <EntitySetMapping Name="TAdmin">
+      <EntityTypeMapping TypeName="IsTakipModel.TAdmin">
+        <MappingFragment StoreEntitySet="TAdmin">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Admin" ColumnName="Admin" />
+          <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TCagri">
+      <EntityTypeMapping TypeName="IsTakipModel.TCagri">
+        <MappingFragment StoreEntitySet="TCagri">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CagriFirma" ColumnName="CagriFirma" />
+          <ScalarProperty Name="Konu" ColumnName="Konu" />
+          <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+          <ScalarProperty Name="Durum" ColumnName="Durum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TDepartman">
+      <EntityTypeMapping TypeName="IsTakipModel.TDepartman">
+        <MappingFragment StoreEntitySet="TDepartman">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TGorev">
+      <EntityTypeMapping TypeName="IsTakipModel.TGorev">
+        <MappingFragment StoreEntitySet="TGorev">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="GorevVeren" ColumnName="GorevVeren" />
+          <ScalarProperty Name="GorevAlan" ColumnName="GorevAlan" />
+          <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+          <ScalarProperty Name="Durum" ColumnName="Durum" />
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TGorevDetay">
+      <EntityTypeMapping TypeName="IsTakipModel.TGorevDetay">
+        <MappingFragment StoreEntitySet="TGorevDetay">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Gorev" ColumnName="Gorev" />
+          <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+          <ScalarProperty Name="Saat" ColumnName="Saat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TPersonel">
+      <EntityTypeMapping TypeName="IsTakipModel.TPersonel">
+        <MappingFragment StoreEntitySet="TPersonel">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Personel" ColumnName="Personel" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+          <ScalarProperty Name="Gorsel" ColumnName="Gorsel" />
+          <ScalarProperty Name="Departman" ColumnName="Departman" />
+          <ScalarProperty Name="Durum" ColumnName="Durum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TCagriDetay">
+      <EntityTypeMapping TypeName="IsTakipModel.TCagriDetay">
+        <MappingFragment StoreEntitySet="TCagriDetay">
+          <ScalarProperty Name="Saat" ColumnName="Saat" />
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+          <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+          <ScalarProperty Name="Cagri" ColumnName="Cagri" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TFirma">
+      <EntityTypeMapping TypeName="IsTakipModel.TFirma">
+        <MappingFragment StoreEntitySet="TFirma">
+          <ScalarProperty Name="Adres" ColumnName="Adres" />
+          <ScalarProperty Name="Il" ColumnName="Il" />
+          <ScalarProperty Name="Sektor" ColumnName="Sektor" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+          <ScalarProperty Name="Yetkili" ColumnName="Yetkili" />
+          <ScalarProperty Name="Firma" ColumnName="Firma" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

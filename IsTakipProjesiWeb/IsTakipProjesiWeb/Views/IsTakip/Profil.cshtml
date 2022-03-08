@@ -1,0 +1,35 @@
+﻿@model IsTakipProjesiWeb.Models.Entity.TFirma
+@{
+    ViewBag.Title = "Profil";
+    Layout = "~/Views/Shared/Firma.cshtml";
+}
+
+<h2>Profil Düzenle</h2>
+<br />
+
+@using (Html.BeginForm("ProfilGuncelle", "IsTakip", FormMethod.Post))
+{
+
+    @Html.Label("Firma Adı")
+    @Html.TextBoxFor(x => x.Firma, new { @class = "form-control" })
+    <br />
+    @Html.Label("Yetkili")
+    @Html.TextBoxFor(x => x.Yetkili, new { @class = "form-control" })
+    <br />
+    @Html.Label("Şifre")
+    @Html.TextBoxFor(x => x.Sifre, new { @class = "form-control" })
+    <br />
+    @Html.Label("Sektör")
+    @Html.TextBoxFor(x => x.Sektor, new { @class = "form-control" })
+    <br />
+    @Html.Label("İl")
+    @Html.TextBoxFor(x => x.Il, new { @class = "form-control" })
+    <br />
+    @Html.Label("Adres")
+    @Html.TextAreaFor(x => x.Adres, 10, 4, new { @class = "form-control" })
+    <br />
+    @Html.HiddenFor(c => c.ID)
+    <button class="btn btn-primary">Profil Güncelle</button>
+}
+
+

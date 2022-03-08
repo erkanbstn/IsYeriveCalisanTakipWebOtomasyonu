@@ -1,0 +1,53 @@
+﻿@using IsTakipProjesiWeb.Models.Entity
+@model List<TCagri>
+@{
+    ViewBag.Title = "AktifCagri";
+    Layout = "~/Views/Shared/Firma.cshtml";
+}
+
+<h2>Aktif Çağrılar</h2>
+<br />
+<h3>@ViewBag.CagriSayisi</h3>
+<br />
+<table class="table table-hover">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Konu
+        </th>
+        <th>
+            Tarih
+        </th>
+        <th>
+            Düzenle
+        </th>
+        <th>
+            Detaylar
+        </th>
+    </tr>
+    @foreach (var cgr in Model)
+    {
+        <tr>
+            <td>
+                @cgr.ID
+            </td>
+            <td>
+                @cgr.Konu
+            </td>
+            <td>
+                @cgr.Tarih
+            </td>
+            <td>
+                <a class="btn btn-info" href="~/IsTakip/CagriGetir/@cgr.ID">Düzenle</a>
+            </td>
+            <td>
+                <a class="btn btn-warning" href="~/IsTakip/CagriDetay/@cgr.ID">Detaylar</a>
+            </td>
+        </tr>
+    }
+</table>
+<a href="~/IsTakip/YeniCagri" class="btn btn-primary">Yeni Çağrı Ekle</a>
+
+

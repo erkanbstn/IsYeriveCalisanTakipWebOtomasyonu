@@ -1,0 +1,25 @@
+﻿@model IsTakipProjesiWeb.Models.Entity.TCagri
+@{
+    ViewBag.Title = "CagriGetir";
+    Layout = "~/Views/Shared/Firma.cshtml";
+}
+
+<h2>Çağrıları Düzenle</h2>
+<br />
+
+@using (Html.BeginForm("CagriGuncelle", "IsTakip", FormMethod.Post))
+{
+
+    @Html.Label("Konu")
+    @Html.TextBoxFor(x => x.Konu, new { @class = "form-control" })
+    <br />
+    @Html.Label("Açıklama")
+    @Html.TextBoxFor(x => x.Aciklama, new { @class = "form-control" })
+    <br />
+    @Html.Label("Durum")
+    @Html.TextBoxFor(x => x.Durum, new { @class = "form-control" })
+    <br />
+    @Html.HiddenFor(c=>c.ID)
+    <button class="btn btn-primary">Çağrı Güncelle</button>
+}
+

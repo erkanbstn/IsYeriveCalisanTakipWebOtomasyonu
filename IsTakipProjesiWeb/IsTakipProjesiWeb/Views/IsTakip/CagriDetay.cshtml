@@ -1,0 +1,41 @@
+﻿@using IsTakipProjesiWeb.Models.Entity
+@model List<TCagriDetay>
+@{
+    ViewBag.Title = "CagriDetay";
+    Layout = "~/Views/Shared/Firma.cshtml";
+}
+<h2>Çağrı Detayları</h2>
+<br />
+<table class="table table-hover">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Açıklama
+        </th>
+        <th>
+            Tarih
+        </th>
+        <th>
+            Saat
+        </th>
+    </tr>
+    @foreach (var cgr in Model)
+    {
+        <tr>
+            <td>
+                @cgr.ID
+            </td>
+            <td>
+                @cgr.Aciklama
+            </td>
+            <td>
+                @cgr.Tarih
+            </td>
+            <td>
+                @cgr.Saat
+            </td>
+        </tr>
+    }
+</table>
